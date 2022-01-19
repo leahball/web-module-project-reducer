@@ -6,6 +6,7 @@ import {
   addMemory,
   applyMemory,
   changeOperation,
+  clearMemory,
 } from "../actions";
 
 import "./App.css";
@@ -40,6 +41,10 @@ function App() {
     dispatch(applyMemory());
   };
 
+  const handleClearMemory = () => {
+    dispatch(clearMemory());
+  };
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -65,7 +70,7 @@ function App() {
             <div className="row">
               <CalcButton onClick={handleAddMemory} value={"M+"} />
               <CalcButton onClick={handleApplyMemory} value={"MR"} />
-              <CalcButton value={"MC"} />
+              <CalcButton onClick={handleClearMemory} value={"MC"} />
             </div>
 
             <div className="row">
