@@ -3,6 +3,8 @@ import {
   APPLY_NUMBER,
   CHANGE_OPERATION,
   CLEAR_DISPLAY,
+  ADD_MEMORY,
+  APPLY_MEMORY,
 } from "./../actions";
 
 export const initialState = {
@@ -23,8 +25,6 @@ const calculateResult = (num1, num2, operation) => {
 };
 
 const reducer = (state, action) => {
-  //   console.log("3. entered the reducer", action);
-
   switch (action.type) {
     case ADD_ONE:
       return {
@@ -48,6 +48,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         total: 0,
+      };
+
+    case ADD_MEMORY:
+      return {
+        ...state,
+        memory: state.total,
+      };
+
+    case APPLY_MEMORY:
+      return {
+        ...state,
+        total: calculateResult(state.total, state.memory, state.operation),
       };
 
     default:
